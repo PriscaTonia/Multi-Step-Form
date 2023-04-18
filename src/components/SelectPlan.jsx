@@ -2,7 +2,7 @@ import ArcadeSVG from "../assets/images/icon-arcade.svg";
 import AdvancedSVG from "../assets/images/icon-advanced.svg";
 import ProSVG from "../assets/images/icon-pro.svg";
 import { stateDetailsContext } from "../state/StateProvider";
-import { useState, useContext, useMemo } from "react";
+import { useContext, useMemo } from "react";
 
 const SelectPlan = () => {
   const { formDetails, setFormDetails } = useContext(stateDetailsContext);
@@ -58,7 +58,7 @@ const SelectPlan = () => {
     <div className="flex flex-col w-full gap-10">
       {/* Plans */}
       <div className="flex w-full justify-between">
-        {/* Arcade Plan */}
+        {/* Begining of  Plans */}
         {plans.map((plan) => {
           const isActive = plan.name === formDetails.plan.name;
 

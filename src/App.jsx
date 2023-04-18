@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { stateDetailsContext } from "./state/StateProvider";
 import PersonalInfo from "./components/PersonalInfo";
 import SelectPlan from "./components/SelectPlan";
+import Addons from "./components/AddOns";
 
 function App() {
   const {
@@ -130,8 +131,10 @@ function App() {
               <PersonalInfo />
             ) : steps === 1 ? (
               <SelectPlan />
+            ) : steps === 2 ? (
+              <Addons />
             ) : (
-              "Hi"
+              "hello"
             )}
           </div>
           {/* Button Container */}

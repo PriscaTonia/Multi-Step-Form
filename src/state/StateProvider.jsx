@@ -39,12 +39,7 @@ const StateProvider = (props) => {
       },
       image: ArcadeSVG,
     },
-    addons: [
-      {
-        addonName: "",
-        addonPrice: "",
-      },
-    ],
+    addons: [],
     totalPrice: "",
   });
 
