@@ -54,4 +54,4 @@ export default PersonalInfo;
 
 const labelStyle = "text-[#02295a] font-normal text-[1rem]";
 const inputStyle =
-  "rounded-xl border border-[#d6d9e6] placeholder-[#d6d9e6] text-[#02295a] p-3 font-medium text-[1.1rem] outline-none";
+  "rounded-xl border border-[#d6d9e6] placeholder-[#d6d9e6] text-[#02295a] p-3 font-medium text-[1.1rem] outline-none hover:border-[#473dff] hover:cursor-pointer focus:border-[#473dff]";

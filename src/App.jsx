@@ -3,18 +3,12 @@ import { stateDetailsContext } from "./state/StateProvider";
 import PersonalInfo from "./components/PersonalInfo";
 import SelectPlan from "./components/SelectPlan";
 import Addons from "./components/AddOns";
+import Summary from "./components/Summary";
+import ThankYou from "./components/Thankyou";
 
 function App() {
-  const {
-    steps,
-    setSteps,
-    buttonType,
-    setButtonType,
-    headers,
-    setHeaders,
-    formDetails,
-    setFormDetails,
-  } = useContext(stateDetailsContext);
+  const { steps, setSteps, headers, setHeaders } =
+    useContext(stateDetailsContext);
 
   // Styles
 
@@ -31,9 +25,6 @@ function App() {
   const NextStep = () => {
     let step = steps + 1;
     setSteps(step);
-    if (steps === headers.length - 1) {
-      return <h1>Hello There, You have Finished</h1>;
-    }
   };
 
   const GoBack = () => {
@@ -42,14 +33,15 @@ function App() {
   };
 
   return (
-    <div className=" lg:flex justify-center items-center bg-[#f0f6ff] w-full h-screen ">
+    <div className=" lg:flex justify-center items-center bg-[#f0f6ff] w-full h-auto pb-5 lg:pb-0 ">
       {/* Main Container */}
-      <main className="flex flex-col lg:justify-between lg:flex-row w-full h-auto lg:w-[80%] min-h-[90%] lg:rounded-xl bg-[#ffffff] lg:p-5 ">
+      <main className="flex flex-col lg:justify-between lg:flex-row w-full h-auto lg:w-[80%] min-h-[90%] lg:rounded-xl lg:bg-[#ffffff] lg:p-5 ">
         {/* Steps Container Section */}
         <section className="flex justify-center lg:justify-normal items-start gap-2 lg:gap-8 lg:flex-col lg:rounded-xl w-full min-h-[200px] lg:w-[30%] lg:min-h-full p-8 bg-[url('./assets/images/bg-sidebar-mobile.svg')] bg-no-repeat bg-cover lg:bg-[url('./assets/images/bg-sidebar-desktop.svg')]">
           {/* step one */}
           <div className="flex items-center gap-6 lg:min-w-[250px]">
             <p
+              onClick={() => setSteps(0)}
               className={`${
                 steps === 0 ? activeStepStyles : defaultStepStyles
               }`}
@@ -66,6 +58,7 @@ function App() {
           {/* step two */}
           <div className="flex items-center gap-6 lg:min-w-[250px]">
             <p
+              onClick={() => setSteps(1)}
               className={`${
                 steps === 1 ? activeStepStyles : defaultStepStyles
               }`}
@@ -82,6 +75,7 @@ function App() {
           {/* step three */}
           <div className="flex items-center gap-6 lg:min-w-[250px]">
             <p
+              onClick={() => setSteps(2)}
               className={`${
                 steps === 2 ? activeStepStyles : defaultStepStyles
               }`}
@@ -98,9 +92,8 @@ function App() {
           {/* step four */}
           <div className="flex items-center gap-6 lg:min-w-[250px]">
             <p
-              className={`${
-                steps === 3 ? activeStepStyles : defaultStepStyles
-              }`}
+              onClick={() => setSteps(3)}
+              className={`${steps >= 3 ? activeStepStyles : defaultStepStyles}`}
             >
               4
             </p>
@@ -114,17 +107,19 @@ function App() {
         </section>
 
         {/* Form Container Section */}
-        <section className="flex flex-col gap-12 w-full lg:w-[60%] pt-10 pb-6 ">
+        <section className="flex flex-col rounded-xl  gap-12 w-[90%] mt-[-50px] mx-auto lg:m-0 lg:w-[60%] pt-10 pb-6 px-6 lg:px-0 bg-white ">
           {/* Step Header */}
-          <div className="flex flex-col w-full">
-            <h1 className="text-[#02295a] text-[2.5rem] font-bold pb-6">
-              {headers[steps].title}
-            </h1>
-            <p className=" text-[#9699ab] text-[1.1rem] ">
-              {" "}
-              {headers[steps].text}{" "}
-            </p>
-          </div>
+          {steps < headers.length && (
+            <div className="flex flex-col w-full">
+              <h1 className="text-[#02295a] text-[1.5rem] lg:text-[2.5rem] font-bold pb-6">
+                {headers[steps].title}
+              </h1>
+              <p className=" text-[#9699ab] text-[15px] lg:text-[1.1rem] ">
+                {" "}
+                {headers[steps].text}{" "}
+              </p>
+            </div>
+          )}
           {/* Steps Content */}
           <div className="flex h-[80%] w-full lg:w-[75%]">
             {steps === 0 ? (
@@ -133,19 +128,26 @@ function App() {
               <SelectPlan />
             ) : steps === 2 ? (
               <Addons />
+            ) : steps === 3 ? (
+              <Summary />
             ) : (
-              "hello"
+              <ThankYou />
             )}
           </div>
           {/* Button Container */}
-          <div className="flex justify-between w-full lg:max-w-[75%]">
+          <div
+            className={
+              steps > 3
+                ? btnContainer
+                : "flex justify-between w-full lg:max-w-[75%]"
+            }
+          >
             <button onClick={GoBack} className={backBtn}>
               Go Back
             </button>
             <button
-              type={buttonType}
               onClick={NextStep}
-              className="hover:bg-[#473dff] bg-[#02295a] text-white py-4 px-6 rounded-xl font-medium "
+              className={steps === 3 ? confirmBtnStyle : btnStyles}
             >
               {steps === 3 ? "Confirm" : "Next Step"}
             </button>
@@ -157,3 +159,9 @@ function App() {
 }
 
 export default App;
+
+const btnContainer = "invisible";
+const btnStyles =
+  "hover:bg-[#473dff] bg-[#02295a] text-white py-4 px-6 rounded-xl font-medium";
+const confirmBtnStyle =
+  "hover:bg-[#473dff] bg-[#473dff] text-white py-4 px-6 rounded-xl font-medium";
