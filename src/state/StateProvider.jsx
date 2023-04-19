@@ -7,7 +7,6 @@ export const stateDetailsContext = createContext();
 const StateProvider = (props) => {
   // Creating my different states
   const [steps, setSteps] = useState(0);
-  const [buttonType, setButtonType] = useState("button");
   const [headers, setHeaders] = useState([
     {
       title: "Personal info",
@@ -40,14 +39,12 @@ const StateProvider = (props) => {
       image: ArcadeSVG,
     },
     addons: [],
-    totalPrice: "",
+    totalPrice: 0,
   });
 
   const value = {
     steps,
     setSteps,
-    buttonType,
-    setButtonType,
     headers,
     setHeaders,
     formDetails,

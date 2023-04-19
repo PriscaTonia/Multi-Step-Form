@@ -57,7 +57,10 @@ const Addons = () => {
   const getAddonIsSelected = (addons = [], addon) =>
     addons.find((item) => item.id === addon.id);
 
-  console.log(formDetails.addons);
+  const activePlanBoxStyle = "bg-[#f0f6ff] border-[#473dff] ";
+  const addonStyle =
+    " w-full h-auto flex gap-[1rem] items-center py-3 px-4 mb-4 border rounded-md border-[#d6d9e6] hover:border-[#473dff] hover:cursor-pointer z-20";
+
   return (
     <div className="w-full h-auto">
       {addons.map((addon) => {
@@ -67,7 +70,9 @@ const Addons = () => {
           <section
             key={addon.name}
             onClick={() => handleAddonClick(addon)}
-            className=" w-full h-auto flex gap-[1rem] items-center py-3 px-4 mb-4 border rounded-md border-[#d6d9e6] hover:border-[#473dff] hover:cursor-pointer z-20 "
+            className={
+              isActive ? `${activePlanBoxStyle} ${addonStyle}` : `${addonStyle}`
+            }
           >
             {/* Check Box */}
             <label id="container" className="">
