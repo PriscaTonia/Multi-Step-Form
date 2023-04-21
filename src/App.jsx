@@ -7,30 +7,14 @@ import Summary from "./components/Summary";
 import ThankYou from "./components/Thankyou";
 
 function App() {
+  // State
   const { steps, setSteps, headers, setHeaders } =
     useContext(stateDetailsContext);
 
   // Styles
-
-  const backBtn =
-    steps === 0
-      ? "invisible"
-      : "text-[#9699ab] hover:text-[#02295a] font-medium ";
   const defaultStepStyles = "py-2 px-4 border rounded-full cursor-pointer";
   const activeStepStyles =
     "py-2 px-4 bg-[#bfe2fd] text-[#02295a]  border-none rounded-full font-medium cursor-pointer ";
-
-  // Button Functions
-
-  const NextStep = () => {
-    let step = steps + 1;
-    setSteps(step);
-  };
-
-  const GoBack = () => {
-    let step = steps - 1;
-    setSteps(step);
-  };
 
   return (
     <div className=" lg:flex justify-center items-center bg-[#f0f6ff] w-full h-auto min-h-screen pb-5 lg:pb-0 ">
@@ -134,24 +118,6 @@ function App() {
               <ThankYou />
             )}
           </div>
-          {/* Button Container */}
-          <div
-            className={
-              steps > 3
-                ? btnContainer
-                : "flex justify-between w-full lg:max-w-[75%]"
-            }
-          >
-            <button onClick={GoBack} className={backBtn}>
-              Go Back
-            </button>
-            <button
-              onClick={NextStep}
-              className={steps === 3 ? confirmBtnStyle : btnStyles}
-            >
-              {steps === 3 ? "Confirm" : "Next Step"}
-            </button>
-          </div>
         </section>
       </main>
     </div>
@@ -159,9 +125,3 @@ function App() {
 }
 
 export default App;
-
-const btnContainer = "invisible";
-const btnStyles =
-  "hover:bg-[#473dff] bg-[#02295a] text-white py-4 px-6 rounded-xl font-medium";
-const confirmBtnStyle =
-  "hover:bg-[#473dff] bg-[#473dff] text-white py-4 px-6 rounded-xl font-medium";

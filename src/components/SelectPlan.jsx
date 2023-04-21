@@ -5,7 +5,21 @@ import { stateDetailsContext } from "../state/StateProvider";
 import { useContext, useMemo } from "react";
 
 const SelectPlan = () => {
-  const { formDetails, setFormDetails } = useContext(stateDetailsContext);
+  // Context State
+
+  const { steps, setSteps, formDetails, setFormDetails } =
+    useContext(stateDetailsContext);
+
+  // Button Functions
+
+  const nextStep = () => {
+    let step = steps + 1;
+    setSteps(step);
+  };
+  const goBack = () => {
+    let step = steps - 1;
+    setSteps(step);
+  };
 
   const isYearlyPlan = useMemo(
     () => formDetails.planFrequency === "Yearly",
@@ -42,7 +56,19 @@ const SelectPlan = () => {
     []
   );
 
-  // Styles
+  // Button Styles
+
+  const backBtn =
+    steps === 0
+      ? "invisible"
+      : "text-[#9699ab] hover:text-[#02295a] font-medium ";
+  const btnContainer = "invisible";
+  const btnStyles =
+    "hover:bg-[#473dff] bg-[#02295a] text-white py-4 px-6 rounded-xl font-medium";
+  const confirmBtnStyle =
+    "hover:bg-[#473dff] bg-[#473dff] text-white py-4 px-6 rounded-xl font-medium";
+
+  // Other Styles
 
   const spanTxtStyle = "text-[#9699ab]";
   const headerTxtStyle = "flex flex-col gap-1 text-[#02295a] font-bold";
@@ -99,7 +125,6 @@ const SelectPlan = () => {
         })}
       </div>
       {/* End of Plans */}
-
       {/* Monthly or Yearly */}
       <div className="flex justify-center bg-[#f0f6ff] gap-8 items-center p-6 rounded-lg">
         <p
@@ -138,6 +163,21 @@ const SelectPlan = () => {
           Yearly
         </p>
       </div>
+      <div
+        className={
+          steps > 3 ? btnContainer : "flex justify-between w-full mt-5 lg:mt-0"
+        }
+      >
+        <button onClick={goBack} className={backBtn}>
+          Go Back
+        </button>
+        <button
+          onClick={nextStep}
+          className={steps === 3 ? confirmBtnStyle : btnStyles}
+        >
+          {steps === 3 ? "Confirm" : "Next Step"}
+        </button>
+      </div>{" "}
     </div>
   );
 };
