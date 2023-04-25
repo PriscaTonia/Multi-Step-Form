@@ -6,7 +6,7 @@ export const stateDetailsContext = createContext();
 
 const StateProvider = (props) => {
   // Creating my different states
-  const [steps, setSteps] = useState(0);
+  const [steps, setSteps] = useState(+localStorage.getItem("steps") || 0);
   const [headers, setHeaders] = useState([
     {
       title: "Personal info",
@@ -26,19 +26,19 @@ const StateProvider = (props) => {
     },
   ]);
   const [formDetails, setFormDetails] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    planFrequency: "",
+    fullName: localStorage.getItem("fullName") || "",
+    email: localStorage.getItem("email") || "",
+    phoneNumber: localStorage.getItem("phoneNum") || "",
+    planFrequency: localStorage.getItem("frequency") || "Monthly",
     plan: {
-      name: "Arcade",
-      price: {
+      name: localStorage.getItem("planName") || "Arcade",
+      price: localStorage.getItem("price") || {
         monthly: 9,
         yearly: 90,
       },
-      image: ArcadeSVG,
+      image: localStorage.getItem("image") || ArcadeSVG,
     },
-    addons: [],
+    addons: JSON.parse(localStorage.getItem("addons")) || [],
     totalPrice: 0,
   });
 

@@ -2,7 +2,7 @@ import ArcadeSVG from "../assets/images/icon-arcade.svg";
 import AdvancedSVG from "../assets/images/icon-advanced.svg";
 import ProSVG from "../assets/images/icon-pro.svg";
 import { stateDetailsContext } from "../state/StateProvider";
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useMemo } from "react";
 
 const SelectPlan = () => {
   // Context State
@@ -21,6 +21,12 @@ const SelectPlan = () => {
     setSteps(step);
   };
 
+  useEffect(() => {
+    localStorage.setItem("frequency", formDetails.planFrequency);
+    localStorage.setItem("planName", formDetails.plan.name);
+    localStorage.setItem("price", JSON.stringify(formDetails.plan.price));
+    localStorage.setItem("img", formDetails.plan.image);
+  }, [formDetails.planFrequency, formDetails.plan]);
   const isYearlyPlan = useMemo(
     () => formDetails.planFrequency === "Yearly",
     [formDetails.planFrequency]
@@ -91,12 +97,12 @@ const SelectPlan = () => {
           return (
             <div
               key={plan.name}
-              onClick={() =>
+              onClick={() => {
                 setFormDetails({
                   ...formDetails,
                   plan,
-                })
-              }
+                });
+              }}
               className={
                 isActive
                   ? `${boxStyle} ${activePlanBoxStyle}`

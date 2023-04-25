@@ -22,6 +22,9 @@ const PersonalInfo = () => {
 
   const submitHandler = (data) => {
     setFormDetails({ ...formDetails, ...data });
+    localStorage.setItem("fullName", data.fullName);
+    localStorage.setItem("email", data.email);
+    localStorage.setItem("phoneNum", data.phoneNumber);
     nextStep();
   };
 

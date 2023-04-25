@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { stateDetailsContext } from "./state/StateProvider";
 import PersonalInfo from "./components/PersonalInfo";
 import SelectPlan from "./components/SelectPlan";
@@ -10,6 +10,15 @@ function App() {
   // State
   const { steps, setSteps, headers, setHeaders } =
     useContext(stateDetailsContext);
+
+  // Local Storage
+  useEffect(() => {
+    localStorage.setItem("steps", steps.toString());
+
+    if (steps == 4) {
+      localStorage.clear();
+    }
+  }, [steps]);
 
   // Styles
   const defaultStepStyles = "py-2 px-4 border rounded-full cursor-pointer";
@@ -114,8 +123,10 @@ function App() {
               <Addons />
             ) : steps === 3 ? (
               <Summary />
-            ) : (
+            ) : steps === 4 ? (
               <ThankYou />
+            ) : (
+              ""
             )}
           </div>
         </section>

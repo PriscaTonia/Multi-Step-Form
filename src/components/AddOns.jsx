@@ -1,5 +1,5 @@
 import { stateDetailsContext } from "../state/StateProvider";
-import { useContext, useMemo } from "react";
+import { useContext, useMemo, useEffect } from "react";
 
 const Addons = () => {
   const { steps, setSteps, formDetails, setFormDetails } =
@@ -64,7 +64,11 @@ const Addons = () => {
     },
   ];
 
-  const handleAddonClick = (addon) =>
+  useEffect(() => {
+    localStorage.setItem("addons", JSON.stringify(formDetails.addons));
+  }, [formDetails.addons]);
+
+  const handleAddonClick = (addon) => {
     setFormDetails((currentFormDetails) => {
       let { addons } = currentFormDetails;
 
@@ -78,6 +82,7 @@ const Addons = () => {
 
       return { ...currentFormDetails, addons };
     });
+  };
 
   const getAddonIsSelected = (addons = [], addon) =>
     addons.find((item) => item.id === addon.id);
