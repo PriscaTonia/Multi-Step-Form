@@ -20,7 +20,8 @@ const PersonalInfo = () => {
 
   // Functions
 
-  const submitHandler = (data) => {
+  const submitHandler = (data, event) => {
+    event.preventDefault();
     setFormDetails({ ...formDetails, ...data });
     localStorage.setItem("fullName", data.fullName);
     localStorage.setItem("email", data.email);

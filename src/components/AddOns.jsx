@@ -58,15 +58,11 @@ const Addons = () => {
       name: "Customizable profile",
       text: "Custom theme on your profile",
       price: {
-        monthly: 2,
-        yearly: 20,
+        monthly: 3,
+        yearly: 30,
       },
     },
   ];
-
-  useEffect(() => {
-    localStorage.setItem("addons", JSON.stringify(formDetails.addons));
-  }, [formDetails.addons]);
 
   const handleAddonClick = (addon) => {
     setFormDetails((currentFormDetails) => {
@@ -79,6 +75,8 @@ const Addons = () => {
       } else {
         addons.push(addon);
       }
+
+      localStorage.setItem("addons", JSON.stringify(addons));
 
       return { ...currentFormDetails, addons };
     });

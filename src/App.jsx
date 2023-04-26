@@ -105,11 +105,11 @@ function App() {
           {steps < headers.length && (
             <div className="flex flex-col w-full">
               <h1 className="text-[#02295a] text-[1.5rem] lg:text-[2.5rem] font-bold pb-6">
-                {headers[steps].title}
+                {headers[steps]?.title}
               </h1>
               <p className=" text-[#9699ab] text-[15px] lg:text-[1.1rem] ">
                 {" "}
-                {headers[steps].text}{" "}
+                {headers[steps]?.text}{" "}
               </p>
             </div>
           )}

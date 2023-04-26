@@ -32,7 +32,7 @@ const StateProvider = (props) => {
     planFrequency: localStorage.getItem("frequency") || "Monthly",
     plan: {
       name: localStorage.getItem("planName") || "Arcade",
-      price: localStorage.getItem("price") || {
+      price: JSON.parse(localStorage.getItem("price")) || {
         monthly: 9,
         yearly: 90,
       },

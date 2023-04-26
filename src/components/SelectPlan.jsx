@@ -27,6 +27,7 @@ const SelectPlan = () => {
     localStorage.setItem("price", JSON.stringify(formDetails.plan.price));
     localStorage.setItem("img", formDetails.plan.image);
   }, [formDetails.planFrequency, formDetails.plan]);
+
   const isYearlyPlan = useMemo(
     () => formDetails.planFrequency === "Yearly",
     [formDetails.planFrequency]
