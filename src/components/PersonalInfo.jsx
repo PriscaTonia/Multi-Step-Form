@@ -20,8 +20,8 @@ const PersonalInfo = () => {
 
   // Functions
 
-  const submitHandler = (data, event) => {
-    event.preventDefault();
+  const submitHandler = (data, e) => {
+    e.preventDefault();
     setFormDetails({ ...formDetails, ...data });
     localStorage.setItem("fullName", data.fullName);
     localStorage.setItem("email", data.email);
@@ -77,6 +77,9 @@ const PersonalInfo = () => {
         <div className="flex flex-col gap-2   ">
           <label className={labelStyle}>Name</label>
           <input
+            onKeyDown={(e) => {
+              e.key === "Enter" && e.preventDefault();
+            }}
             {...register("fullName", { required: "This field is required" })}
             className={inputStyle}
             type="text"
@@ -88,6 +91,9 @@ const PersonalInfo = () => {
         <div className="flex flex-col gap-2   ">
           <label className={labelStyle}>Email Address</label>
           <input
+            onKeyDown={(e) => {
+              e.key === "Enter" && e.preventDefault();
+            }}
             {...register("email", { required: "This field is required" })}
             className={inputStyle}
             type="email"
@@ -99,6 +105,9 @@ const PersonalInfo = () => {
         <div className="flex flex-col gap-2   ">
           <label className={labelStyle}>Phone Number</label>
           <input
+            onKeyDown={(e) => {
+              e.key === "Enter" && e.preventDefault();
+            }}
             {...register("phoneNumber", {
               required: "This field is required",
               minLength: { value: 11, message: "Minimum Length is 11" },
