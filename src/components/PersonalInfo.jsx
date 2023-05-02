@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { stateDetailsContext } from "../state/StateProvider";
 import { useForm } from "react-hook-form";
+import { motion } from "framer-motion";
 
 const PersonalInfo = () => {
   // Context State
@@ -68,7 +69,13 @@ const PersonalInfo = () => {
     "rounded-xl border border-[#d6d9e6] placeholder-[#d6d9e6] text-[#02295a] p-3 font-medium text-[1.1rem] outline-none hover:border-[#473dff] hover:cursor-pointer focus:border-[#473dff]";
 
   return (
-    <form
+    <motion.form
+      animate={{
+        x: 0,
+      }}
+      initial={{
+        x: -100,
+      }}
       onSubmit={handleSubmit(submitHandler)}
       className="flex flex-col w-full h-full justify-between "
     >
@@ -76,7 +83,10 @@ const PersonalInfo = () => {
         {/* Name Field */}
         <div className="flex flex-col gap-2   ">
           <label className={labelStyle}>Name</label>
-          <input
+          <motion.input
+            whileFocus={{
+              scale: 0.97,
+            }}
             onKeyDown={(e) => {
               e.key === "Enter" && e.preventDefault();
             }}
@@ -90,7 +100,10 @@ const PersonalInfo = () => {
         {/* Email Field */}
         <div className="flex flex-col gap-2   ">
           <label className={labelStyle}>Email Address</label>
-          <input
+          <motion.input
+            whileFocus={{
+              scale: 0.97,
+            }}
             onKeyDown={(e) => {
               e.key === "Enter" && e.preventDefault();
             }}
@@ -104,7 +117,10 @@ const PersonalInfo = () => {
         {/* Phone Number Field */}
         <div className="flex flex-col gap-2   ">
           <label className={labelStyle}>Phone Number</label>
-          <input
+          <motion.input
+            whileFocus={{
+              scale: 0.97,
+            }}
             onKeyDown={(e) => {
               e.key === "Enter" && e.preventDefault();
             }}
@@ -128,14 +144,16 @@ const PersonalInfo = () => {
         <button onClick={goBack} className={backBtn}>
           Go Back
         </button>
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           type="submit"
           className={steps === 3 ? confirmBtnStyle : btnStyles}
         >
           {steps === 3 ? "Confirm" : "Next Step"}
-        </button>
+        </motion.button>
       </div>
-    </form>
+    </motion.form>
   );
 };
 

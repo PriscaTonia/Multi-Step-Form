@@ -1,5 +1,6 @@
 import { stateDetailsContext } from "../state/StateProvider";
 import { useContext, useMemo, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Addons = () => {
   const { steps, setSteps, formDetails, setFormDetails } =
@@ -90,7 +91,15 @@ const Addons = () => {
     " w-full h-auto flex gap-[1rem] items-center py-3 px-4 mb-4 border rounded-md border-[#d6d9e6] hover:border-[#473dff] hover:cursor-pointer z-20";
 
   return (
-    <div className="w-full h-full flex justify-between flex-col">
+    <motion.div
+      animate={{
+        x: 0,
+      }}
+      initial={{
+        x: -100,
+      }}
+      className="w-full h-full flex justify-between flex-col"
+    >
       <div>
         {addons.map((addon) => {
           const isActive = Boolean(
@@ -98,7 +107,13 @@ const Addons = () => {
           );
 
           return (
-            <section
+            <motion.section
+              whileHover={{
+                scale: 1.1,
+              }}
+              whileTap={{
+                scale: 0.97,
+              }}
               key={addon.name}
               onClick={() => handleAddonClick(addon)}
               className={
@@ -123,7 +138,7 @@ const Addons = () => {
                   ? `+$${addon.price.yearly}/yr`
                   : `+$${addon.price.monthly}/mo`}
               </p>
-            </section>
+            </motion.section>
           );
         })}
       </div>
@@ -135,14 +150,16 @@ const Addons = () => {
         <button onClick={goBack} className={backBtn}>
           Go Back
         </button>
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={nextStep}
           className={steps === 3 ? confirmBtnStyle : btnStyles}
         >
           {steps === 3 ? "Confirm" : "Next Step"}
-        </button>
+        </motion.button>
       </div>{" "}
-    </div>
+    </motion.div>
   );
 };
 

@@ -5,6 +5,7 @@ import SelectPlan from "./components/SelectPlan";
 import Addons from "./components/AddOns";
 import Summary from "./components/Summary";
 import ThankYou from "./components/Thankyou";
+import { motion } from "framer-motion";
 
 function App() {
   // State
@@ -26,9 +27,20 @@ function App() {
     "py-2 px-4 bg-[#bfe2fd] text-[#02295a]  border-none rounded-full font-medium cursor-pointer ";
 
   return (
-    <div className=" lg:flex justify-center items-center bg-[#f0f6ff] w-full h-auto min-h-screen pb-5 lg:pb-0 ">
+    <motion.div className=" lg:flex justify-center items-center bg-[#f0f6ff] w-full h-auto min-h-screen pb-5 lg:pb-0 ">
       {/* Main Container */}
-      <main className="flex flex-col lg:justify-between max-w-[1400px] lg:flex-row w-full lg:w-[80%] lg:rounded-xl lg:bg-[#ffffff] lg:p-5 ">
+      <motion.main
+        animate={{
+          x: 0,
+        }}
+        initial={{
+          x: "-100vw",
+        }}
+        transition={{
+          duration: 1,
+        }}
+        className="flex flex-col lg:justify-between max-w-[1400px] lg:flex-row w-full lg:w-[80%] lg:rounded-xl lg:bg-[#ffffff] lg:p-5 "
+      >
         {/* Steps Container Section */}
         <section className="flex justify-center lg:justify-normal items-start gap-2 lg:gap-8 lg:flex-col lg:rounded-xl w-full min-h-[200px] lg:w-[30%] lg:min-h-[600px] p-8 bg-[url('./assets/images/bg-sidebar-mobile.svg')] bg-no-repeat bg-cover lg:bg-[url('./assets/images/bg-sidebar-desktop.svg')]">
           {/* step one */}
@@ -130,8 +142,8 @@ function App() {
             )}
           </div>
         </section>
-      </main>
-    </div>
+      </motion.main>
+    </motion.div>
   );
 }
 
