@@ -42,7 +42,7 @@ function App() {
         className="flex flex-col lg:justify-between max-w-[1400px] lg:flex-row w-full lg:w-[80%] lg:rounded-xl lg:bg-[#ffffff] lg:p-5 "
       >
         {/* Steps Container Section */}
-        <section className="flex justify-center lg:justify-normal items-start gap-2 lg:gap-8 lg:flex-col lg:rounded-xl w-full min-h-[600px] lg:w-[30%] lg:min-h-[600px] p-8 bg-[url('./assets/images/bg-sidebar-mobile.svg')] bg-no-repeat bg-cover lg:bg-[url('./assets/images/bg-sidebar-desktop.svg')]">
+        <section className="flex justify-center lg:justify-normal items-start gap-2 lg:gap-8 lg:flex-col lg:rounded-xl w-full  min-h-[200px] lg:w-[30%] lg:min-h-[600px] p-8 bg-[url('./assets/images/bg-sidebar-mobile.svg')] bg-no-repeat bg-cover lg:bg-[url('./assets/images/bg-sidebar-desktop.svg')]">
           {/* step one */}
           <div className="flex items-center gap-6 lg:min-w-[250px]">
             <p
