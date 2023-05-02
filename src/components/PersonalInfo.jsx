@@ -131,7 +131,7 @@ const PersonalInfo = () => {
             className={inputStyle}
             id="number"
             type="number"
-            placeholder="e.g. +234 904 3245 276"
+            placeholder="e.g. 09043245276"
           />
           <p className="text-red-700">{errors.phoneNumber?.message}</p>
         </div>
@@ -145,7 +145,6 @@ const PersonalInfo = () => {
           Go Back
         </button>
         <motion.button
-          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           type="submit"
           className={steps === 3 ? confirmBtnStyle : btnStyles}
