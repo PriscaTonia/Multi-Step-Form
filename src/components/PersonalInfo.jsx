@@ -110,7 +110,7 @@ const PersonalInfo = () => {
             {...register("email", { required: "This field is required" })}
             className={inputStyle}
             type="email"
-            placeholder="e.g. priscaebube@gmail.com"
+            placeholder="e.g. priscatonia@gmail.com"
           />
           <p className="text-red-700">{errors.email?.message}</p>
         </div>
@@ -131,7 +131,7 @@ const PersonalInfo = () => {
             className={inputStyle}
             id="number"
             type="number"
-            placeholder="e.g. 09043245276"
+            placeholder="e.g. 08043235762"
           />
           <p className="text-red-700">{errors.phoneNumber?.message}</p>
         </div>
