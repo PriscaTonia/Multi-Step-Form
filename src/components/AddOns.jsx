@@ -109,7 +109,7 @@ const Addons = () => {
           return (
             <motion.section
               whileHover={{
-                scale: 1.1,
+                scale: 1.05,
               }}
               whileTap={{
                 scale: 0.97,
@@ -151,7 +151,7 @@ const Addons = () => {
           Go Back
         </button>
         <motion.button
-          whileHover={{ scale: 1.1 }}
+          // whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={nextStep}
           className={steps === 3 ? confirmBtnStyle : btnStyles}

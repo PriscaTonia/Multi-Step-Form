@@ -194,7 +194,7 @@ const SelectPlan = () => {
           Go Back
         </button>
         <motion.button
-          whileHover={{ scale: 1.1 }}
+          // whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={nextStep}
           className={steps === 3 ? confirmBtnStyle : btnStyles}

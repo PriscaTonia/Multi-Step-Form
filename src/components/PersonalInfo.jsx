@@ -145,7 +145,6 @@ const PersonalInfo = () => {
           Go Back
         </button>
         <motion.button
-          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           type="submit"
           className={steps === 3 ? confirmBtnStyle : btnStyles}
