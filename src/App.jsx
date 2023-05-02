@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 function App() {
   // State
-  const { steps, setSteps, headers, setHeaders } =
+  const { steps, setSteps, headers, setHeaders, formDetails, setFormDetails } =
     useContext(stateDetailsContext);
 
   // Local Storage
@@ -63,7 +63,13 @@ function App() {
           {/* step two */}
           <div className="flex items-center gap-6 lg:min-w-[250px]">
             <p
-              onClick={() => setSteps(1)}
+              onClick={() => {
+                if (formDetails.fullName) {
+                  setSteps(1);
+                } else {
+                  setSteps(0);
+                }
+              }}
               className={`${
                 steps === 1 ? activeStepStyles : defaultStepStyles
               }`}
@@ -80,7 +86,13 @@ function App() {
           {/* step three */}
           <div className="flex items-center gap-6 lg:min-w-[250px]">
             <p
-              onClick={() => setSteps(2)}
+              onClick={() => {
+                if (formDetails.fullName) {
+                  setSteps(2);
+                } else {
+                  setSteps(0);
+                }
+              }}
               className={`${
                 steps === 2 ? activeStepStyles : defaultStepStyles
               }`}
@@ -97,7 +109,13 @@ function App() {
           {/* step four */}
           <div className="flex items-center gap-6 lg:min-w-[250px]">
             <p
-              onClick={() => setSteps(3)}
+              onClick={() => {
+                if (formDetails.fullName) {
+                  setSteps(3);
+                } else {
+                  setSteps(0);
+                }
+              }}
               className={`${steps >= 3 ? activeStepStyles : defaultStepStyles}`}
             >
               4
