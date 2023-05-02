@@ -1,5 +1,6 @@
 import { stateDetailsContext } from "../state/StateProvider";
 import { useContext, useEffect, useMemo } from "react";
+import { motion } from "framer-motion";
 
 const Summary = () => {
   // Context State
@@ -57,7 +58,15 @@ const Summary = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-between">
+    <motion.div
+      animate={{
+        x: 0,
+      }}
+      initial={{
+        x: -100,
+      }}
+      className="w-full h-full flex flex-col justify-between"
+    >
       <div>
         {/* All Plans Selection */}
         <section className="flex flex-col w-full h-auto p-6 mb-8 bg-[#f0f6ff] rounded-lg">
@@ -120,14 +129,16 @@ const Summary = () => {
         <button onClick={goBack} className={backBtn}>
           Go Back
         </button>
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={nextStep}
           className={steps === 3 ? confirmBtnStyle : btnStyles}
         >
           {steps === 3 ? "Confirm" : "Next Step"}
-        </button>
+        </motion.button>
       </div>{" "}
-    </div>
+    </motion.div>
   );
 };
 

@@ -3,6 +3,7 @@ import AdvancedSVG from "../assets/images/icon-advanced.svg";
 import ProSVG from "../assets/images/icon-pro.svg";
 import { stateDetailsContext } from "../state/StateProvider";
 import { useContext, useEffect, useMemo } from "react";
+import { motion } from "framer-motion";
 
 const SelectPlan = () => {
   // Context State
@@ -88,7 +89,15 @@ const SelectPlan = () => {
   const activeFrequencyTextStyle = "text-[#02295a] font-medium";
 
   return (
-    <div className="flex flex-col w-full gap-10 z-20">
+    <motion.div
+      animate={{
+        x: 0,
+      }}
+      initial={{
+        x: -100,
+      }}
+      className="flex flex-col w-full gap-10 z-20"
+    >
       {/* Plans */}
       <div className="flex flex-col gap-4 lg:flex-row w-full justify-between">
         {/* Begining of  Plans */}
@@ -96,7 +105,13 @@ const SelectPlan = () => {
           const isActive = plan.name === formDetails.plan.name;
 
           return (
-            <div
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+              }}
+              whileTap={{
+                scale: 0.97,
+              }}
               key={plan.name}
               onClick={() => {
                 setFormDetails({
@@ -127,7 +142,7 @@ const SelectPlan = () => {
                   2 months free
                 </span>
               </h4>
-            </div>
+            </motion.div>
           );
         })}
       </div>
@@ -178,14 +193,16 @@ const SelectPlan = () => {
         <button onClick={goBack} className={backBtn}>
           Go Back
         </button>
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           onClick={nextStep}
           className={steps === 3 ? confirmBtnStyle : btnStyles}
         >
           {steps === 3 ? "Confirm" : "Next Step"}
-        </button>
+        </motion.button>
       </div>{" "}
-    </div>
+    </motion.div>
   );
 };
 
