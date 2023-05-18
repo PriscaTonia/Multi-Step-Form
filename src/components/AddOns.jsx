@@ -123,8 +123,14 @@ const Addons = () => {
               }
             >
               {/* Check Box */}
-              <label id="container" className="">
-                <input type="checkbox" checked={isActive} onChange={() => {}} />
+              <label id="container" htmlFor={addon.id}>
+                <input
+                  type="checkbox"
+                  onClick={() => handleAddonClick(addon)}
+                  id={addon.id}
+                  checked={isActive}
+                  onChange={() => {}}
+                />
                 <span id="checkmark"></span>
               </label>
               {/* Texts */}

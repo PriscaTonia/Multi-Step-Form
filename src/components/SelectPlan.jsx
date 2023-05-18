@@ -82,7 +82,7 @@ const SelectPlan = () => {
   const headerTxtStyle = "flex flex-col gap-1 text-[#02295a] font-bold";
   const imgStyle = "w-[50px] h-[50px]";
   const boxStyle =
-    "flex flex-row gap-6 lg:flex-col lg:justify-between p-5 h-auto lg:min-h-[200px] w-full lg:w-[30%] border rounded-lg cursor-pointer";
+    "flex flex-row gap-6 lg:flex-col lg:justify-between p-5 h-auto lg:min-h-[200px] w-full min-h-[125px] lg:w-[30%] border rounded-lg cursor-pointer";
   const planBoxStyle = "border-[#9699ab]";
   const activePlanBoxStyle = "bg-[#f0f6ff] border-[#473dff] ";
   const frequencyTextStyle = "text-[#9699ab] font-medium";
